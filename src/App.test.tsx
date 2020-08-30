@@ -1,9 +1,13 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+jest.mock('./AccountBalance/AccountBalance', () => {
+  return function DummyHeader() {
+    return <header> my dummy header </header>
+  }
+});
+
+test('renders sub component', () => {
+  const rendered = render(<App />);
 });
